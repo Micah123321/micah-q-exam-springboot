@@ -3,6 +3,7 @@ package com.micah.exam_springboot.config;
 import com.micah.exam_springboot.interceptor.JwtAuthenticationInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.connector.Connector;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,20 +22,23 @@ public class WebConfig implements WebMvcConfigurer {
     private final JwtAuthenticationInterceptor jwtAuthenticationInterceptor;
 
 
+    @Value("${useToken}")
+    private Boolean useToken;
+
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //addPathPatterns 拦截路径 excludePathPatterns 排除路径
-        registry.addInterceptor(jwtAuthenticationInterceptor)
-                .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/user/login") //登录
-                .excludePathPatterns("/api/user/register") //注册
-                .excludePathPatterns("/api/category/**") //分类
-                .excludePathPatterns("/api/product/**") //
-//                .excludePathPatterns("/api/wallet/**") //
-                .excludePathPatterns("/doc.html")//文档地址
-        ;
+        if (useToken) {
+            registry.addInterceptor(jwtAuthenticationInterceptor)
+                    .addPathPatterns("/api/**")
+                    .excludePathPatterns("/api/user/login") //登录
+                    .excludePathPatterns("/doc.html")//文档地址
+            ;
+        }
+
     }
+
     /**
      * 文件命名
      *
