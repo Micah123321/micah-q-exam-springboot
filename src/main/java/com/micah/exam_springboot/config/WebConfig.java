@@ -3,6 +3,7 @@ package com.micah.exam_springboot.config;
 import com.micah.exam_springboot.interceptor.JwtAuthenticationInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.connector.Connector;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -27,7 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
 
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
+    public void addInterceptors(@NotNull InterceptorRegistry registry) {
         //addPathPatterns 拦截路径 excludePathPatterns 排除路径
         if (useToken) {
             registry.addInterceptor(jwtAuthenticationInterceptor)
