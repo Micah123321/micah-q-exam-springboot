@@ -38,5 +38,7 @@ logging:
     com.micah: debug
 swagger:
   enabled: true
+# token的标识
+tokenMark: Authorization
 
 

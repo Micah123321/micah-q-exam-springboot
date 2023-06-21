@@ -28,9 +28,9 @@ public class JwtUtil {
     public static final Long JWT_TTL = 24 * 60 * 60 * 1000L;
 
     /**
-     * 密钥
+     * 密钥,用于base64编码,注意自行修改
      */
-    public static final String JWT_KEY = "hechenghui";
+    public static final String JWT_KEY = "12Micah@toksens@gmail.com";
 
     public static String getUUID() {
         return UUID.randomUUID().toString().replaceAll("-", "");
