@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 人人开源 All rights reserved.
+ * Copyright (c) 2018 Micah开源 All rights reserved.
  * <p>
  * https://www.renren.io
  * <p>
