@@ -6,7 +6,7 @@
 	<artifactId>micah-generator</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<description>renren-generator</description>
+	<description>micah-generator</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
